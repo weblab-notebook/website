@@ -1,4 +1,4 @@
-![landing](https://github.com/weblab-notebook/weblab/blob/9ebb266ffb1e68db962f0bb988ee505c670d0f12/website/static/landing.svg)
+![landing](https://github.com/weblab-notebook/website/blob/8be6df198faa501a181b7e963234a56e9d416be3/static/landing.svg)
 
 
 # Weblab
