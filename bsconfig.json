@@ -1,0 +1,45 @@
+{
+  "name": "weblab",
+  "reason": {
+    "react-jsx": 3
+  },
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "__tests__",
+      "type": "dev",
+      "subdirs": true
+    },
+    {
+      "dir": "__mocks__",
+      "type": "dev",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6"
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "@rescript/react",
+    "rescript-material-ui",
+    "rescript-material-ui-lab",
+    "rescript-webapi",
+    "bs-fetch",
+    "@glennsl/bs-jest",
+    "@moox/bs-react-helmet"
+  ],
+  "ppx-flags": [
+    "rescript-material-ui-ppx/ppx"
+  ],
+  "refmt": 3
+}

@@ -1,0 +1,238 @@
+{
+    "nbformat": 4,
+    "nbformat_minor": 0,
+    "metadata": {
+        "kernel_info": {
+            "name": "Weblab"
+        },
+        "language_info": {
+            "name": "javascript"
+        }
+    },
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# The Weblab interface\n\nThe weblab interface lets you view and edit Weblab notebooks. It is composed of the notebook Editor, the Menubar and the Sidepane. In the notebook Editor you can change and run the content of cells. The Menubar helps you create, rearrange, or delete cells as well as save the notebook. The Sidepane contains different tabs to manage files or show the documentation."
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<h1>The Weblab interface</h1>\n<p>The weblab interface lets you view and edit Weblab notebooks. It is composed of the notebook Editor, the Menubar and the Sidepane. In the notebook Editor you can change and run the content of cells. The Menubar helps you create, rearrange, or delete cells as well as save the notebook. The Sidepane contains different tabs to manage files or show the documentation.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Menubar\n\nThe purpose of the Menubar is to help edit the notebook. On the one hand this means to create, arrange or delete cells. On the other hand to save or download the notebook.\n\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<h2>Menubar</h2>\n<p>The purpose of the Menubar is to help edit the notebook. On the one hand this means to create, arrange or delete cells. On the other hand to save or download the notebook.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![menu](/img/menubar/menu.svg)\n\nThe Menu is a collection all possible actions related to a notebook."
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/menu.svg\" alt=\"menu\" /></p>\n<p>The Menu is a collection all possible actions related to a notebook.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![play_arrow](/img/menubar/play_arrow.svg) \n\nThe \"Run\"-button evaluates the currently selected cell. For that a cell has to be selected with the cursor.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/play_arrow.svg\" alt=\"play_arrow\" /></p>\n<p>The &quot;Run&quot;-button evaluates the currently selected cell. For that a cell has to be selected with the cursor.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![save](/img/menubar/save.svg)\n\nThe \"Save\"-button saves the current state of the notebook to the local browser storage. The saved notebook is accessible in the Sidepane on the left.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/save.svg\" alt=\"save\" /></p>\n<p>The &quot;Save&quot;-button saves the current state of the notebook to the local browser storage. The saved notebook is accessible in the Sidepane on the left.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![save_alt](/img/menubar/save_alt.svg)\n\nThe \"Download\"-button downloads the currently opened notebook. This way notebooks can be stored outside the browser in the local file system.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/save_alt.svg\" alt=\"save_alt\" /></p>\n<p>The &quot;Download&quot;-button downloads the currently opened notebook. This way notebooks can be stored outside the browser in the local file system.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![post_add](/img/menubar/post_add.svg)\n\nThe \"Add cell\"-button creates either a Code or Markdown cell. The cell is inserted either below the currently selected cell or if no cell is selected at the end of the notebook.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/post_add.svg\" alt=\"post_add\" /></p>\n<p>The &quot;Add cell&quot;-button creates either a Code or Markdown cell. The cell is inserted either below the currently selected cell or if no cell is selected at the end of the notebook.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![arrow_upward](/img/menubar/arrow_upward.svg)\n\nThe \"Move cell up\"-button moves the currently selected cell upward by one.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/arrow_upward.svg\" alt=\"arrow_upward\" /></p>\n<p>The &quot;Move cell up&quot;-button moves the currently selected cell upward by one.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![arrow_downward](/img/menubar/arrow_downward.svg)\n\nThe \"Move cell down\"-button moves the currently selected cell downward by one.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/arrow_downward.svg\" alt=\"arrow_downward\" /></p>\n<p>The &quot;Move cell down&quot;-button moves the currently selected cell downward by one.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![delete](/img/menubar/delete.svg)\n\nThe \"Delete\"-button deletes the currently selected cell.\n"
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/menubar/delete.svg\" alt=\"delete\" /></p>\n<p>The &quot;Delete&quot;-button deletes the currently selected cell.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Files\n\nThe Files pane helps to organize multiple notebooks. The files that are visible in the Files pane are actually still stored on your computer. They are located in the local storage of your browser. So you are still in charge of your data and your data is never sent to any server."
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<h2>Files</h2>\n<p>The Files pane helps to organize multiple notebooks. The files that are visible in the Files pane are actually still stored on your computer. They are located in the local storage of your browser. So you are still in charge of your data and your data is never sent to any server.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![menu](/img/sidepane/menu.svg)\n\nThe Menu is a collection of all actions related to the files in the Files pane."
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/sidepane/menu.svg\" alt=\"menu\" /></p>\n<p>The Menu is a collection of all actions related to the files in the Files pane.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![note_add](/img/sidepane/note_add.svg)\n\nThe \"New notebook\"-button creates an empty notebook. It is typically names \"untitled.ipynb\" and is visible in the Files pane."
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/sidepane/note_add.svg\" alt=\"note_add\" /></p>\n<p>The &quot;New notebook&quot;-button creates an empty notebook. It is typically names &quot;untitled.ipynb&quot; and is visible in the Files pane.</p>\n"
+                    }
+                }
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![upload](/img/sidepane/upload.svg)\n\nWith \"Upload button\" you can select a notebook or text file on your computer to uploaded into the Weblab Files. The File is actually still stored on your computer, in the local storage of your browser. So you are still in control of your data."
+            ],
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "metadata": {},
+                    "data": {
+                        "text/plain": "<p><img src=\"/img/sidepane/upload.svg\" alt=\"upload\" /></p>\n<p>With &quot;Upload button&quot; you can select a notebook or text file on your computer to uploaded into the Weblab Files. The File is actually still stored on your computer, in the local storage of your browser. So you are still in control of your data.</p>\n"
+                    }
+                }
+            ]
+        }
+    ]
+}

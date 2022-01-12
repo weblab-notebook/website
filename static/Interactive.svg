@@ -1,0 +1,12 @@
+<svg width="380" height="120" version="1.1" viewBox="0 0 100.54 31.75" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0 -265.25)">
+  <g transform="matrix(.072655 0 0 .072655 6.6394 256.91)" fill="#606dbb" fill-opacity=".99216">
+   <path d="m78.841 234.83-51.42 51.42c-2.4799 2.4799-6.5005 2.4799-8.9802 0l-5.9976-5.9973c-2.4757-2.4757-2.4805-6.4881-0.01058-8.9696l40.752-40.943-40.751-40.943c-2.4699-2.4815-2.4651-6.4939 0.01058-8.9696l5.9973-5.9973c2.4799-2.4799 6.5005-2.4799 8.9802 0l51.42 51.42c2.4799 2.4797 2.4799 6.5003 0 8.9802zm101.08 48.426v-8.4667c0-3.507-2.8429-6.35-6.35-6.35h-80.433c-3.5071 0-6.35 2.843-6.35 6.35v8.4667c0 3.507 2.8429 6.35 6.35 6.35h80.433c3.5071 0 6.35-2.843 6.35-6.35z" fill="#606dbb" fill-opacity=".99216" stroke-width=".26458"/>
+  </g>
+  <g letter-spacing="0px" word-spacing="0px">
+   <text transform="scale(1)" x="27.267849" y="275.72388" fill="#606dbb" fill-opacity=".99216" font-family="'Noto Serif'" font-size="9.8778px" font-weight="bold" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="27.267849" y="275.72388" fill="#606dbb" fill-opacity=".99216" font-family="'Noto Serif'" font-size="7.0556px" font-weight="bold" stroke-width=".26458">Interactive</tspan></text>
+   <text x="12.306277" y="278.29111" fill="#000000" font-family="sans-serif" font-size="4.2333px" style="line-height:1.25" xml:space="preserve"/>
+   <text x="7.9188967" y="286.46796" fill="#606dbb" font-family="'Noto Serif'" font-size="4.2333px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="7.9188967" y="286.46796">Evaluate code cells and immediatly see</tspan><tspan x="7.9188967" y="291.86591">the output.</tspan></text>
+  </g>
+ </g>
+</svg>

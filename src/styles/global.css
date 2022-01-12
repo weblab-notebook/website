@@ -1,0 +1,19 @@
+body {
+    margin: 0px;
+}
+img[alt="landing"] {
+    width: 100%;
+    aspect-ratio: 3.208 / 1;
+}
+img[alt="interactive"] {
+    width: 33%;
+    aspect-ratio: 3.166 / 1;
+}
+img[alt="compatible"] {
+    width: 33%;
+    aspect-ratio: 3.166 / 1;
+}
+img[alt="javascript"] {
+    width: 33%;
+    aspect-ratio: 3.166 / 1;
+}
