@@ -50,7 +50,7 @@ module.exports = {
         directives: {
           "default-src": "'self'",
           "style-src": " 'self' 'unsafe-inline'",
-          "img-src": "'self' data: https: www.googletagmanager.com",
+          "img-src": "'self' data: blob: https: www.googletagmanager.com",
           "script-src": "'self' 'unsafe-eval' https://cdn.jsdelivr.net https://cdn.skypack.dev www.googletagmanager.com",
           "connect-src": "'self' https: data:",
         }
