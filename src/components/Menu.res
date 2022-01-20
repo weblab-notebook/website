@@ -117,7 +117,7 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
         }}
         size=#small
         style={ReactDOM.Style.make(~textTransform="none", ())}>
-        <Mui.Typography> {"Kernel"->React.string} </Mui.Typography>
+        <Mui.Typography> {"Runtime"->React.string} </Mui.Typography>
       </Mui.Button>
     </Mui.Tooltip>
     <Mui.Menu
@@ -139,7 +139,7 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
         }}
         dense=true>
         <Mui.ListItemIcon> <Images.Replay fontSize="small" /> </Mui.ListItemIcon>
-        <Mui.ListItemText> {"Reset environment"->React.string} </Mui.ListItemText>
+        <Mui.ListItemText> {"Reset runtime"->React.string} </Mui.ListItemText>
       </Mui.MenuItem>
       <Mui.MenuItem
         onClick={evt => {
@@ -157,7 +157,7 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
         }}
         dense=true>
         <Mui.ListItemIcon> <Images.Clear fontSize="small" /> </Mui.ListItemIcon>
-        <Mui.ListItemText> {"Reset environment & code outputs"->React.string} </Mui.ListItemText>
+        <Mui.ListItemText> {"Reset runtime & code outputs"->React.string} </Mui.ListItemText>
       </Mui.MenuItem>
     </Mui.Menu>
   </Mui.Box>
