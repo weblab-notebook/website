@@ -108,5 +108,57 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
         <Mui.ListItemText> {"Clear all code outputs"->React.string} </Mui.ListItemText>
       </Mui.MenuItem>
     </Mui.Menu>
+    <Mui.Tooltip title={"Kernel"->React.string}>
+      <Mui.Button
+        onClick={handleClick(2)}
+        color={switch darkMode {
+        | Theme.Light => #primary
+        | Theme.Dark => #default
+        }}
+        size=#small
+        style={ReactDOM.Style.make(~textTransform="none", ())}>
+        <Mui.Typography> {"Runtime"->React.string} </Mui.Typography>
+      </Mui.Button>
+    </Mui.Tooltip>
+    <Mui.Menu
+      \"open"={Belt.Option.isSome(anchorEl) && menuNumber.current == 2}
+      keepMounted=true
+      variant=#menu
+      anchorEl={Mui.Any.make(anchorEl)}
+      transformOrigin=transOri
+      onClose={handleClose}
+      transitionDuration={Mui.Menu.TransitionDuration.float(0.2)}
+      \"MenuListProps"={"dense": true, "disablePadding": true}>
+      <Mui.MenuItem
+        onClick={evt => {
+          handleClose(evt, "")
+          let _ = WeblabInterpreter.resetEnvs() |> Js.Promise.catch(error => {
+            Error(Errors.fromPromiseError(error))->Errors.alertError
+            Js.Promise.resolve()
+          })
+        }}
+        dense=true>
+        <Mui.ListItemIcon> <Images.Replay fontSize="small" /> </Mui.ListItemIcon>
+        <Mui.ListItemText> {"Reset runtime"->React.string} </Mui.ListItemText>
+      </Mui.MenuItem>
+      <Mui.MenuItem
+        onClick={evt => {
+          handleClose(evt, "")
+          let _ =
+            WeblabInterpreter.resetEnvs()
+            |> Js.Promise.then_(_ => {
+              notebookDispatch(ClearAllCodeOutput)
+              Js.Promise.resolve()
+            })
+            |> Js.Promise.catch(error => {
+              Error(Errors.fromPromiseError(error))->Errors.alertError
+              Js.Promise.resolve()
+            })
+        }}
+        dense=true>
+        <Mui.ListItemIcon> <Images.Clear fontSize="small" /> </Mui.ListItemIcon>
+        <Mui.ListItemText> {"Reset runtime & code outputs"->React.string} </Mui.ListItemText>
+      </Mui.MenuItem>
+    </Mui.Menu>
   </Mui.Box>
 }

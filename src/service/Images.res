@@ -243,3 +243,9 @@ module Settings = {
   external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
     "default"
 }
+
+module Replay = {
+  @react.component @module("@material-ui/icons/Replay")
+  external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
+    "default"
+}
