@@ -173,7 +173,7 @@ let make = () => {
           Mui.Box.BreakpointObj.make(
             ~xs=Mui.Box.Value.string("48px 0px 1fr"),
             ~sm=Mui.Box.Value.string("48px 0px 1fr"),
-            ~md=Mui.Box.Value.string("48px auto 1fr"),
+            ~md=Mui.Box.Value.string("48px 0px 1fr"),
             (),
           ),
         )}>
