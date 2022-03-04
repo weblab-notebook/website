@@ -249,3 +249,9 @@ module Replay = {
   external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
     "default"
 }
+
+module Discord = {
+  @react.component @module("/src/assets/svg/discord.svg")
+  external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
+    "default"
+}

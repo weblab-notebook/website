@@ -67,6 +67,22 @@ let make = (~setLoginDialog) => {
           </Link>
         </Mui.Typography>
       </Mui.Box>
+      <Mui.Box>
+        <Mui.IconButton>
+          <Link
+            to="https://github.com/weblab-notebook/website"
+            style={ReactDOM.Style.make(~color="white", ())}>
+            <Images.Github />
+          </Link>
+        </Mui.IconButton>
+      </Mui.Box>
+      <Mui.Box mr={Mui.Box.Value.int(4)}>
+        <Mui.IconButton>
+          <Link to="https://discord.gg/PPxHY7pKnD" style={ReactDOM.Style.make(~color="white", ())}>
+            <Images.Discord className="MuiSvgIcon-root" />
+          </Link>
+        </Mui.IconButton>
+      </Mui.Box>
     </Mui.Box>
     <Mui.Box maxHeight={Mui.Box.Value.int(56)} width={Mui.Box.Value.int(80)}>
       {switch session {

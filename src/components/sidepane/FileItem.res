@@ -93,7 +93,11 @@ let make = (~name, ~filesState: FilesBase.filesState, ~filesDispatch, ~notebookD
                 <Mui.ListItemIcon> <Images.OpenInNew fontSize="small" /> </Mui.ListItemIcon>
                 <Mui.ListItemText> {"Open"->React.string} </Mui.ListItemText>
               </Mui.MenuItem>
-              <Mui.MenuItem>
+              <Mui.MenuItem
+                onClick={evt => {
+                  handleClose(evt, "")
+                }}
+                dense=true>
                 <Mui.ListItemIcon> <Images.SaveAlt fontSize="small" /> </Mui.ListItemIcon>
                 <Mui.ListItemText>
                   <a
