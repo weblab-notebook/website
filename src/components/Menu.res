@@ -108,7 +108,7 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
         <Mui.ListItemText> {"Clear all code outputs"->React.string} </Mui.ListItemText>
       </Mui.MenuItem>
     </Mui.Menu>
-    <Mui.Tooltip title={"Kernel"->React.string}>
+    <Mui.Tooltip title={"Runtime"->React.string}>
       <Mui.Button
         onClick={handleClick(2)}
         color={switch darkMode {
