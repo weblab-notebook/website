@@ -37,7 +37,7 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
 
   let (loginDialog, setLoginDialog) = React.useState(() => false)
 
-  let (darkMode, setDarkMode) = React.useState(() => false)
+  let (darkMode, setDarkMode) = React.useState(() => Theme.initializeDarkMode())
 
   let (activeTab, setActiveTab) = React.useState(() => "0")
   let toggle_active_tab = React.useCallback2(tab => {
@@ -71,8 +71,8 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
           let oldName =
             Js.String2.split(url, "/")->Js.Array2.pop->Belt.Option.getWithDefault("notebook.ijsnb")
           let name = if (
-            FilesBase.localStorage
-            ->FilesBase.getItem(oldName)
+            LocalStorage.localStorage
+            ->LocalStorage.getItem(oldName)
             ->Js.Nullable.toOption
             ->Belt.Option.isSome
           ) {

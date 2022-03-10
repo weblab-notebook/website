@@ -9,7 +9,15 @@ let make = (~toggle_sidebar, ~darkMode, ~setDarkMode) => {
           <Mui.FormGroup>
             <Mui.FormControlLabel
               control={<Mui.Switch
-                checked=darkMode onChange={_ => setDarkMode(_ => !darkMode)} size=#small
+                checked=darkMode
+                onChange={_ => {
+                  LocalStorage.localStorage->LocalStorage.setItem(
+                    "darkMode",
+                    string_of_bool(!darkMode),
+                  )
+                  setDarkMode(_ => !darkMode)
+                }}
+                size=#small
               />}
               label={<Mui.Typography
                 variant=#body2 style={ReactDOM.Style.make(~paddingLeft="8px", ())}>

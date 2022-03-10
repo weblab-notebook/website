@@ -1,11 +1,3 @@
-type storage
-@scope("window") @val external localStorage: storage = "localStorage"
-@scope(("window", "localStorage")) @val external storageLength: int = "length"
-@send external setItem: (storage, string, string) => unit = "setItem"
-@send external getItem: (storage, string) => Js.Nullable.t<string> = "getItem"
-@send external removeItem: (storage, string) => unit = "removeItem"
-@send external key: (storage, int) => string = "key"
-
 type file =
   | Notebook(string)
   | PythonNotebook(string)
@@ -26,17 +18,17 @@ let filesReducer = (state, action) => {
       state.files->Belt.HashSet.String.add(name)
       switch file_ {
       | Notebook(file) =>
-        let _ = localStorage->setItem(name, file)
+        let _ = LocalStorage.localStorage->LocalStorage.setItem(name, file)
       | PythonNotebook(file) =>
-        let _ = localStorage->setItem(name, file)
+        let _ = LocalStorage.localStorage->LocalStorage.setItem(name, file)
       | PlainText(_) => ()
       | JSON(_) => ()
       }
       {files: state.files}
     }
   | Setup(name, file) => {
-      for i in 0 to storageLength - 1 {
-        let key = localStorage->key(i)
+      for i in 0 to LocalStorage.storageLength - 1 {
+        let key = LocalStorage.localStorage->LocalStorage.key(i)
         if (
           key |> Js.String.endsWith(".ijsnb") ||
           key |> Js.String.endsWith(".ipynb") ||
@@ -49,9 +41,9 @@ let filesReducer = (state, action) => {
       state.files->Belt.HashSet.String.add(name)
       switch file {
       | Notebook(file) =>
-        let _ = localStorage->setItem(name, file)
+        let _ = LocalStorage.localStorage->LocalStorage.setItem(name, file)
       | PythonNotebook(file) =>
-        let _ = localStorage->setItem(name, file)
+        let _ = LocalStorage.localStorage->LocalStorage.setItem(name, file)
       | PlainText(_) => ()
       | JSON(_) => ()
       }
@@ -59,7 +51,7 @@ let filesReducer = (state, action) => {
     }
   | DeleteFile(name) => {
       state.files->Belt.HashSet.String.remove(name)
-      localStorage->removeItem(name)
+      LocalStorage.localStorage->LocalStorage.removeItem(name)
       {files: state.files}
     }
   | ChangeName(oldName, newName) => {
@@ -67,14 +59,14 @@ let filesReducer = (state, action) => {
         state.files->Belt.HashSet.String.has(oldName) &&
           !(state.files->Belt.HashSet.String.has(newName))
       ) {
-        localStorage
-        ->getItem(oldName)
+        LocalStorage.localStorage
+        ->LocalStorage.getItem(oldName)
         ->Js.Nullable.toOption
         ->Belt.Option.forEach(item => {
           state.files->Belt.HashSet.String.remove(oldName)
           state.files->Belt.HashSet.String.add(newName)
-          localStorage->setItem(newName, item)
-          localStorage->removeItem(oldName)
+          LocalStorage.localStorage->LocalStorage.setItem(newName, item)
+          LocalStorage.localStorage->LocalStorage.removeItem(oldName)
         })
       }
       {files: state.files}
@@ -100,22 +92,22 @@ let getFileType = file => {
 let get = (files: Belt.HashSet.String.t, name) => {
   if files->Belt.HashSet.String.has(name) {
     if name |> Js.String.endsWith(".ijsnb") {
-      switch localStorage->getItem(name)->Js.Nullable.toOption {
+      switch LocalStorage.localStorage->LocalStorage.getItem(name)->Js.Nullable.toOption {
       | Some(item) => Ok(Notebook(item))
       | None => Error(Errors.FileNotFound)
       }
     } else if name |> Js.String.endsWith(".ipynb") {
-      switch localStorage->getItem(name)->Js.Nullable.toOption {
+      switch LocalStorage.localStorage->LocalStorage.getItem(name)->Js.Nullable.toOption {
       | Some(item) => Ok(PythonNotebook(item))
       | None => Error(Errors.FileNotFound)
       }
     } else if name |> Js.String.endsWith(".json") {
-      switch localStorage->getItem(name)->Js.Nullable.toOption {
+      switch LocalStorage.localStorage->LocalStorage.getItem(name)->Js.Nullable.toOption {
       | Some(item) => Ok(JSON(item))
       | None => Error(Errors.FileNotFound)
       }
     } else if name |> Js.String.endsWith(".txt") {
-      switch localStorage->getItem(name)->Js.Nullable.toOption {
+      switch LocalStorage.localStorage->LocalStorage.getItem(name)->Js.Nullable.toOption {
       | Some(item) => Ok(PlainText(item))
       | None => Error(Errors.FileNotFound)
       }

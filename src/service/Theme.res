@@ -37,6 +37,18 @@ let getMode = (theme: Mui.Theme.t) => {
   }
 }
 
+let initializeDarkMode = () => {
+  switch LocalStorage.localStorage->LocalStorage.getItem("darkMode")->Js.Nullable.toOption {
+  | Some(str) =>
+    if str == "true" {
+      true
+    } else {
+      false
+    }
+  | None => false
+  }
+}
+
 module Styles = %makeStyles(
   _theme => {
     wrapper: ReactDOM.Style.make(
