@@ -71,8 +71,8 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
           let oldName =
             Js.String2.split(url, "/")->Js.Array2.pop->Belt.Option.getWithDefault("notebook.ijsnb")
           let name = if (
-            FilesBase.localStorage
-            ->FilesBase.getItem(oldName)
+            LocalStorage.localStorage
+            ->LocalStorage.getItem(oldName)
             ->Js.Nullable.toOption
             ->Belt.Option.isSome
           ) {
