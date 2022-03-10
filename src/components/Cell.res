@@ -1,12 +1,33 @@
 open CellBase
 
-let evalCell = (~cellState: NotebookBase.cellState, ~cellDispatch, ~setSpinner) =>
+let evalCell = (
+  ~cellState: NotebookBase.cellState,
+  ~cellDispatch,
+  ~setSpinner,
+  ~ref: React.ref<'a>,
+) =>
   switch cellState.cell_type {
   | Code =>
     setSpinner(_ => Some())
     WeblabInterpreter.evalCell(cellState.source.contents)
     |> Js.Promise.then_(output => {
       setSpinner(_ => None)
+      ref.current
+      ->Js.Nullable.toOption
+      ->Belt.Option.flatMap(Webapi.Dom.Element.nextElementSibling)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.lastElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.asHtmlElement)
+      ->Belt.Option.map(element => {
+        element->Webapi.Dom.HtmlElement.focus
+      })
+      ->Belt.Option.getWithDefault()
       Js.Promise.resolve(cellDispatch(DisplayCellOutput([output], "inline-block")))
     })
     |> Js.Promise.catch(_ => {
@@ -19,6 +40,22 @@ let evalCell = (~cellState: NotebookBase.cellState, ~cellDispatch, ~setSpinner) 
   | Markdown =>
     WeblabMarkdown.parse(cellState.source.contents)
     |> Js.Promise.then_(output => {
+      ref.current
+      ->Js.Nullable.toOption
+      ->Belt.Option.flatMap(Webapi.Dom.Element.nextElementSibling)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.lastElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.firstElementChild)
+      ->Belt.Option.flatMap(Webapi.Dom.Element.asHtmlElement)
+      ->Belt.Option.map(element => {
+        element->Webapi.Dom.HtmlElement.focus
+      })
+      ->Belt.Option.getWithDefault()
       Js.Promise.resolve(cellDispatch(DisplayCellOutput([TextPlain(output)], "none")))
     })
     |> Js.Promise.catch(_ => {
@@ -53,12 +90,16 @@ let make = (
 
   let darkMode = Theme.getMode(theme)
 
-  <div onMouseOver={_ => setHover(_ => Some())} onMouseLeave={_ => setHover(_ => None)}>
-    <Mui.ListItem
-      key={"li_" ++ string_of_int(cellState.index)}
-      dense=true
-      button=false
-      style={ReactDOM.Style.make(~display="block", ())}>
+  let ref = React.useRef(Js.Nullable.null)
+  let setRef = element => ref.current = element
+
+  <Mui.ListItem
+    ref={ReactDOM.Ref.callbackDomRef(setRef)}
+    key={"li_" ++ string_of_int(cellState.index)}
+    dense=true
+    button=false
+    style={ReactDOM.Style.make(~display="block", ())}>
+    <div onMouseOver={_ => setHover(_ => Some())} onMouseLeave={_ => setHover(_ => None)}>
       <Mui.Box style={ReactDOM.Style.make(~position="relative", ())}>
         <Mui.TextField
           variant=#outlined
@@ -89,7 +130,7 @@ let make = (
                       ReactEvent.Keyboard.shiftKey(evt) == true
                   ) {
                     ReactEvent.Keyboard.preventDefault(evt)
-                    let _ = evalCell(~cellState, ~cellDispatch, ~setSpinner)
+                    let _ = evalCell(~cellState, ~cellDispatch, ~setSpinner, ~ref)
                   }
               },
               "onFocus": {
@@ -121,7 +162,7 @@ let make = (
               <Mui.Tooltip title={"Run"->React.string}>
                 <Mui.Button
                   onMouseDown={_ => {
-                    let _ = evalCell(~cellState, ~cellDispatch, ~setSpinner)
+                    let _ = evalCell(~cellState, ~cellDispatch, ~setSpinner, ~ref)
                   }}
                   style={ReactDOM.Style.make(
                     ~color={
@@ -212,7 +253,6 @@ let make = (
             }),
           )
         }
-
       | Markdown =>
         React.array([
           <div
@@ -233,60 +273,60 @@ let make = (
           </div>,
         ])
       }}
-    </Mui.ListItem>
-    <Mui.Box style={ReactDOM.Style.make(~position="relative", ())}>
-      <Mui.Divider
-        light=true
-        style={ReactDOM.Style.make(
-          ~opacity=switch hover {
-          | Some(_) => "1"
-          | None => "0"
-          },
-          (),
-        )}
-      />
-      <Mui.Box
-        zIndex=3
-        style={ReactDOM.Style.make(
-          ~position="absolute",
-          ~width="100%",
-          ~margin="0 auto",
-          ~left="0",
-          ~right="0",
-          ~top="-12px",
-          ~textAlign="center",
-          ~visibility=switch hover {
-          | Some(_) => "visible"
-          | None => "hidden"
-          },
-          (),
-        )}>
-        <Mui.ButtonGroup
-          size=#small
-          style={ReactDOM.Style.make(~backgroundColor=theme.palette.background.paper, ())}>
-          <Mui.Tooltip title={"Add code cell"->React.string}>
-            <Mui.Button
-              onMouseDown={_ => notebookDispatch(NotebookBase.AddCodeCell(Some(cellState.index)))}
-              color={switch darkMode {
-              | Theme.Light => #primary
-              | Theme.Dark => #default
-              }}>
-              <Images.Code fontSize="small" />
-            </Mui.Button>
-          </Mui.Tooltip>
-          <Mui.Tooltip title={"Add markdown cell"->React.string}>
-            <Mui.Button
-              onMouseDown={_ =>
-                notebookDispatch(NotebookBase.AddMarkdownCell(Some(cellState.index)))}
-              color={switch darkMode {
-              | Theme.Light => #primary
-              | Theme.Dark => #default
-              }}>
-              <Images.Subject fontSize="small" />
-            </Mui.Button>
-          </Mui.Tooltip>
-        </Mui.ButtonGroup>
+      <Mui.Box style={ReactDOM.Style.make(~position="relative", ())}>
+        <Mui.Divider
+          light=true
+          style={ReactDOM.Style.make(
+            ~opacity=switch hover {
+            | Some(_) => "1"
+            | None => "0"
+            },
+            (),
+          )}
+        />
+        <Mui.Box
+          zIndex=3
+          style={ReactDOM.Style.make(
+            ~position="absolute",
+            ~width="100%",
+            ~margin="0 auto",
+            ~left="0",
+            ~right="0",
+            ~top="-12px",
+            ~textAlign="center",
+            ~visibility=switch hover {
+            | Some(_) => "visible"
+            | None => "hidden"
+            },
+            (),
+          )}>
+          <Mui.ButtonGroup
+            size=#small
+            style={ReactDOM.Style.make(~backgroundColor=theme.palette.background.paper, ())}>
+            <Mui.Tooltip title={"Add code cell"->React.string}>
+              <Mui.Button
+                onMouseDown={_ => notebookDispatch(NotebookBase.AddCodeCell(Some(cellState.index)))}
+                color={switch darkMode {
+                | Theme.Light => #primary
+                | Theme.Dark => #default
+                }}>
+                <Images.Code fontSize="small" />
+              </Mui.Button>
+            </Mui.Tooltip>
+            <Mui.Tooltip title={"Add markdown cell"->React.string}>
+              <Mui.Button
+                onMouseDown={_ =>
+                  notebookDispatch(NotebookBase.AddMarkdownCell(Some(cellState.index)))}
+                color={switch darkMode {
+                | Theme.Light => #primary
+                | Theme.Dark => #default
+                }}>
+                <Images.Subject fontSize="small" />
+              </Mui.Button>
+            </Mui.Tooltip>
+          </Mui.ButtonGroup>
+        </Mui.Box>
       </Mui.Box>
-    </Mui.Box>
-  </div>
+    </div>
+  </Mui.ListItem>
 }
