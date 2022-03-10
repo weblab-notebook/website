@@ -32,7 +32,7 @@ let make = () => {
     }
   }, (activeTab, setActiveTab))
 
-  let (darkMode, setDarkMode) = React.useState(() => false)
+  let (darkMode, setDarkMode) = React.useState(() => Theme.initializeDarkMode())
 
   let globClasses = Theme.Styles.useStyles()
   let classes = Styles.useStyles()

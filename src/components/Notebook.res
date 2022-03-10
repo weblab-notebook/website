@@ -37,7 +37,7 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
 
   let (loginDialog, setLoginDialog) = React.useState(() => false)
 
-  let (darkMode, setDarkMode) = React.useState(() => false)
+  let (darkMode, setDarkMode) = React.useState(() => Theme.initializeDarkMode())
 
   let (activeTab, setActiveTab) = React.useState(() => "0")
   let toggle_active_tab = React.useCallback2(tab => {
