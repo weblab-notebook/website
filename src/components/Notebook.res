@@ -148,7 +148,11 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
     () =>
       <Sidepane activeTab>
         <Sidepane_Files
-          toggle_sidebar=SidebarsBase.toggle_sidebar filesState filesDispatch notebookDispatch
+          toggle_sidebar=SidebarsBase.toggle_sidebar
+          filesState
+          filesDispatch
+          notebookName=notebookState.name
+          notebookDispatch
         />
         <Sidepane_Documentation toggle_sidebar=SidebarsBase.toggle_sidebar />
         <Sidepane_Settings toggle_sidebar=SidebarsBase.toggle_sidebar darkMode setDarkMode />

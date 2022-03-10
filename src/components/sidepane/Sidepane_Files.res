@@ -3,6 +3,7 @@ let make = (
   ~toggle_sidebar,
   ~filesState: FilesBase.filesState,
   ~filesDispatch,
+  ~notebookName,
   ~notebookDispatch,
 ) => {
   let theme = Mui.Core.useTheme()
@@ -100,7 +101,9 @@ let make = (
         {filesState.files
         ->Belt.HashSet.String.toArray
         ->Belt.Array.map(name =>
-          <FileItem key={"fi" ++ name} name filesState filesDispatch notebookDispatch />
+          <FileItem
+            key={"fi" ++ name} name notebookName filesState filesDispatch notebookDispatch
+          />
         )
         ->React.array}
       </Mui.List>
