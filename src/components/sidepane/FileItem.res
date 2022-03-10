@@ -5,7 +5,13 @@ let transOri = Mui.Menu.TransformOrigin.make(
 )
 
 @react.component
-let make = (~name, ~filesState: FilesBase.filesState, ~filesDispatch, ~notebookDispatch) => {
+let make = (
+  ~name,
+  ~notebookName,
+  ~filesState: FilesBase.filesState,
+  ~filesDispatch,
+  ~notebookDispatch,
+) => {
   let (state, dispatch) = React.useReducer(FileItemBase.reducer, {name: name, change: false})
   let (anchorEl, setAnchorEl) = React.useState(() => None)
   let (hover, setHover) = React.useState(() => None)
@@ -171,7 +177,9 @@ let make = (~name, ~filesState: FilesBase.filesState, ~filesDispatch, ~notebookD
                 dispatch(FileItemBase.Send)
                 if name != state.name {
                   filesDispatch(FilesBase.ChangeName(name, state.name))
-                  notebookDispatch(NotebookBase.ChangeNotebookName(state.name))
+                  if state.name == notebookName {
+                    notebookDispatch(NotebookBase.ChangeNotebookName(state.name))
+                  }
                 }
               }
             },
