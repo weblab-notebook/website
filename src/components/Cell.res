@@ -53,7 +53,7 @@ let make = (
 
   let darkMode = Theme.getMode(theme)
 
-  <div onMouseOver={_ => setHover(_ => Some())} onMouseOut={_ => setHover(_ => None)}>
+  <div onMouseOver={_ => setHover(_ => Some())} onMouseLeave={_ => setHover(_ => None)}>
     <Mui.ListItem
       key={"li_" ++ string_of_int(cellState.index)}
       dense=true
@@ -108,8 +108,10 @@ let make = (
             },
           }
         />
-        {switch focused {
-        | Some(_) =>
+        {switch (focused, hover, cellState.cell_type) {
+        | (None, None, _) => React.null
+        | (None, Some(_), Markdown) => React.null
+        | (_, _, _) =>
           <Mui.Box
             zIndex=5
             style={ReactDOM.Style.make(~position="absolute", ~bottom="-16px", ~left="16px", ())}>
@@ -177,7 +179,6 @@ let make = (
               </Mui.Tooltip>
             </Mui.ButtonGroup>
           </Mui.Box>
-        | None => React.null
         }}
       </Mui.Box>
       {switch cellState.cell_type {
