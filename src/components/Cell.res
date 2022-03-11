@@ -178,7 +178,8 @@ let make = (
               </Mui.Tooltip>
               <Mui.Tooltip title={"Move cell up"->React.string}>
                 <Mui.Button
-                  onMouseDown={_ => notebookDispatch(NotebookBase.MoveCellUp(selectedCell.current))}
+                  onMouseDown={_ =>
+                    notebookDispatch(NotebookBase.MoveCellUp(Some(cellState.index)))}
                   color={switch darkMode {
                   | Theme.Light => #primary
                   | Theme.Dark => #default
@@ -189,7 +190,7 @@ let make = (
               <Mui.Tooltip title={"Move cell down"->React.string}>
                 <Mui.Button
                   onMouseDown={_ =>
-                    notebookDispatch(NotebookBase.MoveCellDown(selectedCell.current))}
+                    notebookDispatch(NotebookBase.MoveCellDown(Some(cellState.index)))}
                   color={switch darkMode {
                   | Theme.Light => #primary
                   | Theme.Dark => #default
@@ -200,7 +201,7 @@ let make = (
               <Mui.Tooltip title={React.string("Clear output")}>
                 <Mui.Button
                   onMouseDown={_ =>
-                    notebookDispatch(NotebookBase.ClearCodeOutput(selectedCell.current))}
+                    notebookDispatch(NotebookBase.ClearCodeOutput(Some(cellState.index)))}
                   color={switch darkMode {
                   | Theme.Light => #primary
                   | Theme.Dark => #default
@@ -210,7 +211,8 @@ let make = (
               </Mui.Tooltip>
               <Mui.Tooltip title={React.string("Delete cell")}>
                 <Mui.Button
-                  onMouseDown={_ => notebookDispatch(NotebookBase.DeleteCell(selectedCell.current))}
+                  onMouseDown={_ =>
+                    notebookDispatch(NotebookBase.DeleteCell(Some(cellState.index)))}
                   color={switch darkMode {
                   | Theme.Light => #primary
                   | Theme.Dark => #default
