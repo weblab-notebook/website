@@ -52,7 +52,17 @@ let make = (
           onMouseOver={_ => setHover(_ => Some())}
           onMouseOut={_ => setHover(_ => None)}
           style={ReactDOM.Style.make(~width="100%", ())}>
-          <Mui.Typography variant=#body2 style={ReactDOM.Style.make(~marginLeft="4px", ())}>
+          <Mui.Typography
+            variant=#body2
+            style={ReactDOM.Style.make(
+              ~marginLeft="4px",
+              ~fontWeight=if name == notebookName {
+                "bolder"
+              } else {
+                "normal"
+              },
+              (),
+            )}>
             <div onDoubleClick={_ => dispatch(FileItemBase.ShowTextfield)}>
               {name->React.string}
             </div>
