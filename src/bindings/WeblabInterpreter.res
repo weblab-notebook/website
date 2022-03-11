@@ -15,3 +15,13 @@ let evalCell: string => Js.Promise.t<CellBase.output> = (input: string) =>
     | _ => Js.Promise.reject(Js.Exn.anyToExnInternal("Wrong type of interpreter output."))
     }
   })
+
+let listProperties: string => Js.Promise.t<Js.Dict.t<string>> = name =>
+  import_(%raw(`"@weblab-notebook/weblab-interpreter"+""`)) |> Js.Promise.then_(module_ =>
+    Js.Promise.resolve(module_["list_properties"](name))
+  )
+
+let getType: string => Js.Promise.t<string> = name =>
+  import_(%raw(`"@weblab-notebook/weblab-interpreter"+""`)) |> Js.Promise.then_(module_ =>
+    Js.Promise.resolve(module_["get_type"](name))
+  )

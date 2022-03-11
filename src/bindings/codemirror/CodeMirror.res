@@ -31,6 +31,8 @@ external defaultHighlightStyle: 'd = "defaultHighlightStyle"
 external oneDarkHighlightStyle: 'd = "oneDarkHighlightStyle"
 @module("@codemirror/lint") external lintKeymap: Js.Array.t<'c> = "lintKeymap"
 @module("@codemirror/lang-javascript") external javascript: unit => 'e = "javascript"
+@module("@codemirror/lang-javascript")
+external javascriptLanguage: 'g = "javascriptLanguage"
 @module("@codemirror/lang-markdown") external markdown: unit => 'f = "markdown"
 @send external focus: Dom.element => unit = "focus"
 @send external blur: Dom.element => unit = "blur"
@@ -101,6 +103,9 @@ let make = (
           cellDispatch(CellBase.ChangeCellText(value))
         }
       })
+    let globalJavaScriptCompletions = javascriptLanguage["data"]["of"](. {
+      "autocomplete": AutoComplete.completeFromGlobalScope,
+    })
     let view = newEditorView({
       "state": editorState["create"](. {
         "doc": source.contents,
@@ -145,6 +150,7 @@ let make = (
           | CellBase.Code => javascript()
           | CellBase.Markdown => markdown()
           },
+          globalJavaScriptCompletions,
           onUpdate(),
         ],
       }),
