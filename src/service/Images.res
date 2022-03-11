@@ -255,3 +255,9 @@ module Discord = {
   external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
     "default"
 }
+
+module JavaScript = {
+  @react.component @module("/src/assets/svg/js.svg")
+  external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
+    "default"
+}

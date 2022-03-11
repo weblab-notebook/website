@@ -312,7 +312,7 @@ let make = (
                 | Theme.Light => #primary
                 | Theme.Dark => #default
                 }}>
-                <Images.Code fontSize="small" />
+                <Images.JavaScript className="MuiSvgIcon-root" fontSize="small" />
               </Mui.Button>
             </Mui.Tooltip>
             <Mui.Tooltip title={"Add markdown cell"->React.string}>
