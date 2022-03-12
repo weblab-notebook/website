@@ -32,7 +32,7 @@ let make = () => {
     }
   }, (activeTab, setActiveTab))
 
-  let (darkMode, setDarkMode) = React.useState(() => Theme.initializeDarkMode())
+  let (darkMode, setDarkMode) = React.useState(() => false)
 
   let globClasses = Theme.Styles.useStyles()
   let classes = Styles.useStyles()
@@ -44,6 +44,7 @@ let make = () => {
     SupabaseAuth.onAuthStateChange(SupabaseClient.supabase.auth, (_, session) =>
       setSession(_ => session->Js.Nullable.toOption)
     )
+    setDarkMode(_ => Theme.initializeDarkMode())
     asyncReducer(dispatch, AsyncInitialize(session))
     None
   })
