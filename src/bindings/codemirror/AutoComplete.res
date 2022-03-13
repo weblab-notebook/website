@@ -58,11 +58,11 @@ let completeFromGlobalScope = (context: 'context) => {
       Js.Promise.resolve(completeProperties(context["pos"], Js.Dict.empty()))
     }
   } else if nodeBefore["name"] == "VariableName" {
-    WeblabInterpreter.listProperties("window") |> Js.Promise.then_(props =>
+    WeblabInterpreter.listProperties("") |> Js.Promise.then_(props =>
       Js.Promise.resolve(completeProperties(nodeBefore["from"], props))
     )
   } else if context["explicit"] && !(dontCompleteIn->Js.Array2.includes(nodeBefore["name"])) {
-    WeblabInterpreter.listProperties("window") |> Js.Promise.then_(props =>
+    WeblabInterpreter.listProperties("") |> Js.Promise.then_(props =>
       Js.Promise.resolve(completeProperties(context["pos"], props))
     )
   } else {

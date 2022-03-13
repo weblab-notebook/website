@@ -41,7 +41,7 @@
     "@moox/bs-react-helmet": "github:JanKaul/bs-react-helmet#rescript/react",
     "@rescript/react": "^0.10.3",
     "@supabase/supabase-js": "^1.25.2",
-    "@weblab-notebook/weblab-interpreter": "0.2.13",
+    "@weblab-notebook/weblab-interpreter": "0.2.14",
     "@weblab-notebook/weblab-markdown": "0.1.2",
     "bs-fetch": "^0.6.2",
     "gatsby": "^4.4.0",
