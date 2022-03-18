@@ -52,7 +52,7 @@ let make = (~location: Webapi.Dom.Location.t) => {
     } else {
       setLoading(_ => true)
       let _ =
-        SupabaseAuth.updateUser(supabase.auth.api, token, {"password": reset.password})
+        supabase.auth.api->SupabaseAuth.Api.updateUser(token, {"password": reset.password})
         |> Js.Promise.then_((
           response: {
             "data": Js.Nullable.t<SupabaseAuth.data>,

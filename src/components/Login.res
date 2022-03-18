@@ -113,7 +113,7 @@ let make = (~loginDialog, ~setLoginDialog) => {
     ReactEvent.Form.preventDefault(evt)
     setLoading(_ => true)
     let _ =
-      SupabaseAuth.resetPasswordForEmail(supabase.auth.api, reset.email)
+      supabase.auth.api->SupabaseAuth.Api.resetPasswordForEmail(reset.email)
       |> Js.Promise.then_((
         response: {
           "data": Js.Nullable.t<SupabaseAuth.data>,

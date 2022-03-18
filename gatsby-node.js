@@ -1,24 +1,4 @@
-exports.onCreateWebpackConfig = ({
-  stage,
-  rules,
-  loaders,
-  plugins,
-  actions,
-}) => {
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.wasm$/,
-          type: 'webassembly/async',
-        }
-      ]
-    },
-    experiments: {
-      asyncWebAssembly: true
-    },
-    node: {
-      fs: 'empty'
-    }
-  })
-}
+require(`@babel/register`)({
+    presets: ["@babel/preset-env"],
+});
+module.exports = require(`./gatsby-node.mjs`);
