@@ -40,6 +40,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@moox/bs-react-helmet": "github:JanKaul/bs-react-helmet#rescript/react",
     "@rescript/react": "^0.10.3",
+    "@stripe/stripe-js": "^1.25.0",
     "@supabase/supabase-js": "^1.31.1",
     "@weblab-notebook/weblab-interpreter": "0.2.14",
     "@weblab-notebook/weblab-markdown": "0.1.2",

@@ -1,3 +1,5 @@
+open CloudBase
+
 module Styles = %makeStyles(
   _theme => {
     grid: ReactDOM.Style.make(
@@ -149,34 +151,7 @@ let make = (
                           </Mui.CardContent>
                           <Mui.CardActions>
                             <Mui.Button
-                              variant=#contained
-                              onClick={_ => {
-                                let _ =
-                                  Bs_fetch.fetchWithInit(
-                                    "https://us-central1-scenic-treat-317309.cloudfunctions.net/subscription-test",
-                                    Bs_fetch.RequestInit.make(
-                                      ~method_=Bs_fetch.Post,
-                                      ~headers=Bs_fetch.HeadersInit.make({
-                                        "Content-Type": "application/json",
-                                      }),
-                                      ~body=Bs_fetch.BodyInit.make(
-                                        Js.Json.stringifyAny({
-                                          "access_token": session.access_token,
-                                        })->Belt.Option.getWithDefault(""),
-                                      ),
-                                      (),
-                                    ),
-                                  )
-                                  |> Js.Promise.then_(Bs_fetch.Response.json)
-                                  |> Js.Promise.then_(response => {
-                                    Js.Console.log(response)
-                                    Js.Promise.resolve(Some(response))
-                                  })
-                                  |> Js.Promise.catch(error => {
-                                    Error(Errors.fromPromiseError(error))->Errors.alertError
-                                    Js.Promise.resolve(None)
-                                  })
-                              }}>
+                              variant=#contained onClick={_ => processSubscription(session)}>
                               {"Subscribe"->React.string}
                             </Mui.Button>
                           </Mui.CardActions>
