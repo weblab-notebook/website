@@ -40,6 +40,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@moox/bs-react-helmet": "github:JanKaul/bs-react-helmet#rescript/react",
     "@rescript/react": "^0.10.3",
+    "@stripe/stripe-js": "^1.25.0",
     "@supabase/supabase-js": "^1.31.1",
     "@weblab-notebook/weblab-interpreter": "0.2.14",
     "@weblab-notebook/weblab-markdown": "0.1.2",
@@ -59,12 +60,15 @@
     "rescript-material-ui": "^3.0.2",
     "rescript-material-ui-lab": "^3.0.2",
     "rescript-material-ui-ppx": "^3.0.2",
-    "rescript-webapi": "^0.6.1"
+    "rescript-webapi": "^0.6.1",
+    "suspend-react": "^0.0.8"
   },
   "devDependencies": {
+    "@babel/register": "^7.17.7",
     "@glennsl/bs-jest": "^0.7.0",
     "babel-jest": "^27.3.1",
     "jest": "^27.3.1",
-    "rescript": "^9.1.4"
+    "rescript": "^9.1.4",
+    "stripe": "^8.209.0"
   }
 }

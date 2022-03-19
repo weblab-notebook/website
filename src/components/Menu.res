@@ -4,6 +4,10 @@ let transOri = Mui.Menu.TransformOrigin.make(
   (),
 )
 
+let useStyles = Mui.Styles.makeStyles({
+  "buttonPadding": ReactDOM.Style.make(~paddingLeft="16px", ~paddingRight="16px", ()),
+})
+
 @react.component
 let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~filesDispatch) => {
   let (anchorEl, setAnchorEl) = React.useState(() => None)
@@ -22,10 +26,13 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
   let theme = Mui.Core.useTheme()
   let darkMode = Theme.getMode(theme)
 
+  let classes = useStyles(.)
+
   <Mui.Box
     flexDirection={Mui.Box.Value.string("row")} justifyItems={Mui.Box.Value.string("center")}>
     <Mui.Tooltip title={"File"->React.string}>
       <Mui.Button
+        classes={Mui.Button.Classes.make(~root=classes["buttonPadding"], ())}
         onClick={handleClick(0)}
         color={switch darkMode {
         | Theme.Light => #primary
@@ -64,6 +71,7 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
     </Mui.Menu>
     <Mui.Tooltip title={"Cells"->React.string}>
       <Mui.Button
+        classes={Mui.Button.Classes.make(~root=classes["buttonPadding"], ())}
         onClick={handleClick(1)}
         color={switch darkMode {
         | Theme.Light => #primary
@@ -110,6 +118,7 @@ let make = (~notebookState: NotebookBase.notebookState, ~notebookDispatch, ~file
     </Mui.Menu>
     <Mui.Tooltip title={"Runtime"->React.string}>
       <Mui.Button
+        classes={Mui.Button.Classes.make(~root=classes["buttonPadding"], ())}
         onClick={handleClick(2)}
         color={switch darkMode {
         | Theme.Light => #primary

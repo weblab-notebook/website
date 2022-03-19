@@ -50,7 +50,11 @@ let toExn = err => {
 let fromExn = exn => {
   switch exn {
   | WeblabError(err) => err
-  | _ => NoWeblabError
+  | _ =>
+    switch exn->Js.Exn.asJsExn->Belt.Option.flatMap(Js.Exn.message) {
+    | Some(e) => Message(e)
+    | None => NoWeblabError
+    }
   }
 }
 

@@ -51,21 +51,32 @@ external signIn: (
 external onAuthStateChange: (auth, ('a, Js.Nullable.t<session>) => unit) => unit =
   "onAuthStateChange"
 
-@send
-external resetPasswordForEmail: (
-  api,
-  string,
-) => Js.Promise.t<{
-  "data": Js.Nullable.t<data>,
-  "error": Js.Nullable.t<error>,
-}> = "resetPasswordForEmail"
+module Api = {
+  @send
+  external getUser: (
+    api,
+    string,
+  ) => Js.Promise.t<{
+    "user": Js.Nullable.t<user>,
+    "error": Js.Nullable.t<error>,
+  }> = "getUser"
 
-@send
-external updateUser: (
-  api,
-  string,
-  {"password": string},
-) => Js.Promise.t<{
-  "data": Js.Nullable.t<data>,
-  "error": Js.Nullable.t<error>,
-}> = "updateUser"
+  @send
+  external resetPasswordForEmail: (
+    api,
+    string,
+  ) => Js.Promise.t<{
+    "data": Js.Nullable.t<data>,
+    "error": Js.Nullable.t<error>,
+  }> = "resetPasswordForEmail"
+
+  @send
+  external updateUser: (
+    api,
+    string,
+    {"password": string},
+  ) => Js.Promise.t<{
+    "data": Js.Nullable.t<data>,
+    "error": Js.Nullable.t<error>,
+  }> = "updateUser"
+}
