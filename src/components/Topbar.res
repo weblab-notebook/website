@@ -71,20 +71,27 @@ let make = (~setLoginDialog) => {
         <Mui.IconButton>
           <Link
             to="https://github.com/weblab-notebook/website"
-            style={ReactDOM.Style.make(~color="white", ())}>
+            style={ReactDOM.Style.make(~color="white", ~display="flex", ~alignItems="center", ())}>
             <Images.Github />
           </Link>
         </Mui.IconButton>
       </Mui.Box>
-      <Mui.Box mr={Mui.Box.Value.int(4)}>
+      <Mui.Box mr={Mui.Box.Value.int(4)} clone=true>
         <Mui.IconButton>
-          <Link to="https://discord.gg/PPxHY7pKnD" style={ReactDOM.Style.make(~color="white", ())}>
+          <Link
+            to="https://discord.gg/PPxHY7pKnD"
+            style={ReactDOM.Style.make(~color="white", ~display="flex", ~alignItems="center", ())}>
             <Images.Discord className="MuiSvgIcon-root" />
           </Link>
         </Mui.IconButton>
       </Mui.Box>
     </Mui.Box>
-    <Mui.Box maxHeight={Mui.Box.Value.int(56)} width={Mui.Box.Value.int(80)}>
+    <Mui.Box
+      marginLeft={Mui.Box.Value.int(2)}
+      display={Mui.Box.Value.string("flex")}
+      alignItems={Mui.Box.Value.string("center")}
+      maxHeight={Mui.Box.Value.int(56)}
+      width={Mui.Box.Value.int(80)}>
       {switch session {
       | None =>
         <Mui.Button onClick={_ => setLoginDialog(_ => true)} color=#secondary variant=#contained>
@@ -93,8 +100,7 @@ let make = (~setLoginDialog) => {
       | Some(_session) => <>
           <Mui.Tooltip title={"Account"->React.string}>
             <Mui.IconButton
-              onClick=handleClick
-              style={ReactDOM.Style.make(~color="white", ~maxHeight="56", ~marginLeft="8px", ())}>
+              onClick=handleClick style={ReactDOM.Style.make(~color="white", ~maxHeight="56", ())}>
               <Images.AccountCircle fontSize="large" />
             </Mui.IconButton>
           </Mui.Tooltip>
