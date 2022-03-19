@@ -250,6 +250,18 @@ module Replay = {
     "default"
 }
 
+module CheckCircle = {
+  @react.component @module("@material-ui/icons/CheckCircle")
+  external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
+    "default"
+}
+
+module Cancel = {
+  @react.component @module("@material-ui/icons/Cancel")
+  external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
+    "default"
+}
+
 module Discord = {
   @react.component @module("/src/assets/svg/discord.svg")
   external make: (~color: string=?, ~className: string=?, ~fontSize: string=?) => React.element =
