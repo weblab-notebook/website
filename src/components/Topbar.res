@@ -76,7 +76,7 @@ let make = (~setLoginDialog) => {
           </Link>
         </Mui.IconButton>
       </Mui.Box>
-      <Mui.Box mr={Mui.Box.Value.int(4)} clone=true>
+      <Mui.Box clone=true>
         <Mui.IconButton>
           <Link
             to="https://discord.gg/PPxHY7pKnD"
