@@ -51,6 +51,7 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
   // Run computations when component initializes or session updates
 
   React.useEffect0(() => {
+    setDarkMode(_ => Theme.initializeDarkMode())
     // If an URL is passed as a UrlSearchParam, it is tried to open the notebook from that url
     if location->Webapi.Dom.Location.search != "" {
       let url =
@@ -126,7 +127,6 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
     SupabaseAuth.onAuthStateChange(supabase.auth, (_, session) =>
       setSession(_ => session->Js.Nullable.toOption)
     )
-    setDarkMode(_ => Theme.initializeDarkMode())
     titleSEO.contents = None
     None
   })

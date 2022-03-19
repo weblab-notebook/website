@@ -104,69 +104,71 @@ let make = (
           bgcolor={Mui.Box.Value.string(theme.palette.background.default)}>
           sidepane
         </Mui.Box>
-        <Mui.Box style={ReactDOM.Style.make(~gridRow="3", ~gridColumn="3", ())}>
-          <main>
-            <Mui.Box
-              margin={Mui.Box.Value.string("auto")}
-              width={Mui.Box.Value.string("40%")}
-              height={Mui.Box.Value.string("40%")}
-              style={ReactDOM.Style.make(
-                ~position="absolute",
-                ~left="0",
-                ~right="0",
-                ~top="0",
-                ~bottom="0",
-                (),
-              )}>
-              <Mui.Typography
-                align=#center
-                variant=#h3
-                color=#primary
-                style={ReactDOM.Style.make(~fontWeight="700", ~marginBottom="32px", ())}>
-                <Mui.Box width={Mui.Box.Value.int(64)} height={Mui.Box.Value.int(64)} clone=true>
-                  <Images.Logo />
-                </Mui.Box>
-                {"Web"->React.string}
+        <main>
+          <Mui.Box
+            margin={Mui.Box.Value.string("auto")}
+            width={Mui.Box.Value.string("40%")}
+            height={Mui.Box.Value.string("40%")}
+            style={ReactDOM.Style.make(
+              ~position="absolute",
+              ~left="0",
+              ~right="0",
+              ~top="0",
+              ~bottom="0",
+              (),
+            )}>
+            <Mui.Typography
+              align=#center
+              variant=#h3
+              color=#primary
+              style={ReactDOM.Style.make(~fontWeight="700", ~marginBottom="32px", ())}>
+              <Mui.Box width={Mui.Box.Value.int(64)} height={Mui.Box.Value.int(64)} clone=true>
+                <Images.Logo />
+              </Mui.Box>
+              {"Web"->React.string}
+              <Mui.Box
+                display={Mui.Box.Value.string("inline")}
+                style={ReactDOM.Style.make(~color=theme.palette.secondary.main, ())}>
+                {"lab"->React.string}
+              </Mui.Box>
+            </Mui.Typography>
+            {switch session {
+            | Some(session) => <>
                 <Mui.Box
-                  display={Mui.Box.Value.string("inline")}
-                  style={ReactDOM.Style.make(~color=theme.palette.secondary.main, ())}>
-                  {"lab"->React.string}
+                  display={Mui.Box.Value.string("flex")}
+                  justifyContent={Mui.Box.Value.string("center")}
+                  flexDirection={Mui.Box.Value.string("row")}>
+                  {pageContext["priceData"]
+                  ->Belt.Array.map(price => {
+                    switch productData->Belt.HashMap.String.get(price.product) {
+                    | Some(product) =>
+                      <Mui.Card>
+                        <Mui.CardHeader title={product.name->React.string} />
+                        <Mui.CardContent>
+                          <Mui.Typography> {product.description->React.string} </Mui.Typography>
+                          <Mui.Typography>
+                            {(string_of_int(price.unit_amount / 100) ++
+                            " " ++
+                            price.currency ++ "/month")->React.string}
+                          </Mui.Typography>
+                        </Mui.CardContent>
+                        <Mui.CardActions>
+                          <Mui.Button
+                            variant=#contained onClick={_ => processSubscription(session)}>
+                            {"Subscribe"->React.string}
+                          </Mui.Button>
+                        </Mui.CardActions>
+                      </Mui.Card>
+                    | None => React.null
+                    }
+                  })
+                  ->React.array}
                 </Mui.Box>
-              </Mui.Typography>
-              {switch session {
-              | Some(session) => <>
-                  <Mui.Box
-                    display={Mui.Box.Value.string("flex")}
-                    flexDirection={Mui.Box.Value.string("row")}>
-                    {pageContext["priceData"]
-                    ->Belt.Array.map(price => {
-                      switch productData->Belt.HashMap.String.get(price.product) {
-                      | Some(product) =>
-                        <Mui.Card>
-                          <Mui.CardHeader title={product.name->React.string} />
-                          <Mui.CardContent>
-                            <Mui.Typography>
-                              {string_of_int(price.unit_amount / 100)->React.string}
-                            </Mui.Typography>
-                          </Mui.CardContent>
-                          <Mui.CardActions>
-                            <Mui.Button
-                              variant=#contained onClick={_ => processSubscription(session)}>
-                              {"Subscribe"->React.string}
-                            </Mui.Button>
-                          </Mui.CardActions>
-                        </Mui.Card>
-                      | None => React.null
-                      }
-                    })
-                    ->React.array}
-                  </Mui.Box>
-                </>
-              | None => React.null
-              }}
-            </Mui.Box>
-          </main>
-        </Mui.Box>
+              </>
+            | None => React.null
+            }}
+          </Mui.Box>
+        </main>
       </Mui.Box>
       <Login loginDialog setLoginDialog />
     </Session.SessionContext.Provider>
