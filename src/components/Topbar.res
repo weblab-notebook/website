@@ -35,11 +35,10 @@ let make = (~setLoginDialog) => {
       pr={Mui.Box.Value.int(2)}
       style={ReactDOM.Style.make(~color="white", ())}>
       <Mui.Typography variant=#h4 style={ReactDOM.Style.make(~fontWeight="700", ~margin="8px", ())}>
-        <Mui.Box component={Mui.Box.Component.string("span")}> {"Web"->React.string} </Mui.Box>
         <Mui.Box
           component={Mui.Box.Component.string("span")}
           style={ReactDOM.Style.make(~color=theme.palette.secondary.main, ())}>
-          {"lab"->React.string}
+          {"Dashbook"->React.string}
         </Mui.Box>
       </Mui.Typography>
     </Mui.Box>
@@ -70,7 +69,7 @@ let make = (~setLoginDialog) => {
       <Mui.Box>
         <Mui.IconButton>
           <Link
-            to="https://github.com/weblab-notebook/website"
+            to="https://github.com/dashbook"
             style={ReactDOM.Style.make(~color="white", ~display="flex", ~alignItems="center", ())}>
             <Images.Github />
           </Link>

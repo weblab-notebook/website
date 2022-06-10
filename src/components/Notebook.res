@@ -8,7 +8,7 @@ let supabase = SupabaseClient.supabase
 
 let initialFiles = Belt.HashSet.String.make(~hintSize=10)
 
-let titleSEO = ref(Some("Weblab - Machine Learning notebook for Javascript"))
+let titleSEO = ref(Some("Dashbook - Big Data Platform"))
 
 @react.component
 let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCells) => {
@@ -195,7 +195,7 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
         <link rel="icon" href="favicon.png" type_="image/png" />
         <title>
           {titleSEO.contents
-          ->Belt.Option.getWithDefault("Weblab - " ++ notebookState.name)
+          ->Belt.Option.getWithDefault("Dashbook - " ++ notebookState.name)
           ->React.string}
         </title>
         <meta name="google-site-verification" content=googleSiteVerification />
