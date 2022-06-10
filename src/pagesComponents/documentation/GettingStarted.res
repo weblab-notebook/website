@@ -21,12 +21,12 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta
         name="description"
         content="Getting started guide if you are new to Jupyter/Weblab notebooks, Javascript, or programming in general."
       />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="getting_started.ijsnb" initialIndices initialCells />
   </>
 }

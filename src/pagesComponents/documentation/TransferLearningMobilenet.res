@@ -21,11 +21,11 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta
         name="description" content="Image Classification with Transfer Learning and MobileNet v2."
       />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="transfer_learning_mobilenet.ijsnb" initialIndices initialCells />
   </>
 }

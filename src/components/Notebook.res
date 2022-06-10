@@ -191,7 +191,7 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
   <Mui.ThemeProvider theme>
     <Session.SessionContext.Provider value=session>
       <Mui.CssBaseline />
-      <BsReactHelmet>
+      <ReactHelmet>
         <link rel="icon" href="favicon.png" type_="image/png" />
         <title>
           {titleSEO.contents
@@ -209,7 +209,7 @@ let make = (~location: Webapi.Dom.Location.t, ~name, ~initialIndices, ~initialCe
           "image": "https://www.weblab.ai/landing1x1.svg"
         }`->React.string}
         </script>
-      </BsReactHelmet>
+      </ReactHelmet>
       <Mui.Box
         className=classes.sidebar
         boxShadow={Mui.Box.Value.int(2)}

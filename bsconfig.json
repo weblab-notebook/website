@@ -36,7 +36,7 @@
     "rescript-webapi",
     "bs-fetch",
     "@glennsl/bs-jest",
-    "@moox/bs-react-helmet"
+    "rescript-react-helmet"
   ],
   "ppx-flags": [
     "rescript-material-ui-ppx/ppx"

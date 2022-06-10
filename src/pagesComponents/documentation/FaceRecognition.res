@@ -21,12 +21,12 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta
         name="description"
         content="Building a face recognition pipeline with BlazeFace and ArcFace."
       />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="face_recognition.ijsnb" initialIndices initialCells />
   </>
 }

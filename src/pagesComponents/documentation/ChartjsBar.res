@@ -21,9 +21,9 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta name="description" content="Create bar plots with chart.js." />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="chartjs_bar_plot.ijsnb" initialIndices initialCells />
   </>
 }

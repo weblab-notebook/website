@@ -21,9 +21,9 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta name="description" content="Getting started with visualizations using Plotly." />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="plotly_getting_started.ijsnb" initialIndices initialCells />
   </>
 }

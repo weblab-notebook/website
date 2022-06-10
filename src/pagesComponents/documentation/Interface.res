@@ -21,12 +21,12 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta
         name="description"
         content="Find out how to use the user interface of Weblab to edit files, cells and other settings."
       />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="interface.ijsnb" initialIndices initialCells />
   </>
 }

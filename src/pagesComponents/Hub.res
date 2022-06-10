@@ -157,10 +157,10 @@ let make = () => {
   <Mui.ThemeProvider theme>
     <Session.SessionContext.Provider value=session>
       <Mui.CssBaseline />
-      <BsReactHelmet>
+      <ReactHelmet>
         <link rel="icon" href="/favicon.png" type_="image/png" />
         <title> {"Weblab NotebookHub"->React.string} </title>
-      </BsReactHelmet>
+      </ReactHelmet>
       <Mui.Box
         className=globClasses.sidebar
         boxShadow={Mui.Box.Value.int(2)}

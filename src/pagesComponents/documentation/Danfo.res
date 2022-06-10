@@ -21,9 +21,9 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta name="description" content="Introduction into data processing with Danfo.js." />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="danfo.ijsnb" initialIndices initialCells />
   </>
 }

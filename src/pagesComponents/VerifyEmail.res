@@ -3,10 +3,10 @@ let theme = Mui.Theme.create(Theme.getThemeProto(false))
 @react.component
 let make = () => {
   <Mui.ThemeProvider theme>
-    <BsReactHelmet>
+    <ReactHelmet>
       <link rel="icon" href="/favicon.png" type_="image/png" />
       <title> {"Weblab Email Verification"->React.string} </title>
-    </BsReactHelmet>
+    </ReactHelmet>
     <Mui.Box
       margin={Mui.Box.Value.string("auto")}
       width={Mui.Box.Value.string("40%")}

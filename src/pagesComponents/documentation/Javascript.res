@@ -21,12 +21,12 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta
         name="description"
         content="Find information on importing javascript modules and asynchronous programming."
       />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="javascript.ijsnb" initialIndices initialCells />
   </>
 }

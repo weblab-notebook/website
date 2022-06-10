@@ -7,10 +7,10 @@ let theme = Mui.Theme.create(Theme.getThemeProto(false))
 @react.component
 let make = () => {
   <Mui.ThemeProvider theme>
-    <BsReactHelmet>
+    <ReactHelmet>
       <link rel="icon" href="/favicon.png" type_="image/png" />
       <title> {"Weblab Privacy Policy"->React.string} </title>
-    </BsReactHelmet>
+    </ReactHelmet>
     <Mui.Container style={ReactDOM.Style.make(~padding="64px", ())}>
       <Mui.Typography
         variant=#h3

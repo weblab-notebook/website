@@ -21,12 +21,12 @@ let initialCells =
 @react.component
 let make = (~location: Webapi.Dom.Location.t) => {
   <>
-    <BsReactHelmet>
+    <ReactHelmet>
       <meta
         name="description"
         content="Train a neural network with collaborative filtering to give movie recommendations to users based on their ratings of movies they have already watched."
       />
-    </BsReactHelmet>
+    </ReactHelmet>
     <Notebook location name="movie_recommendation.ijsnb" initialIndices initialCells />
   </>
 }
